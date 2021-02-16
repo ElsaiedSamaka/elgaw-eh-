@@ -1,9 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
 import request from "request";
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 
-const apiKey = "e5dc8edab856e1ade47aab982752339a";
+const apiKey = process.env.API_KEY;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,6 +37,6 @@ app.post("/", function (req, res) {
   });
 });
 
-app.listen(3000, function () {
-  console.log("Example app listening on port 3000!");
+app.listen(process.env.PORT, function () {
+  console.log(`Example app listening on port ${process.env.PORT}!`);
 });
